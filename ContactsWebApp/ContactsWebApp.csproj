@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-ContactsWebApp-AE91F9F3-C8A7-4B19-894B-B1CC9889D719</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.19" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+</Project>

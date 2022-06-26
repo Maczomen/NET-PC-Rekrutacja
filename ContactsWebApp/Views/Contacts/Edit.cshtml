@@ -1,0 +1,112 @@
+﻿@model ContactsWebApp.Models.Contact
+@using ContactsWebApp.Data.Enums;
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Contact</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="surname" class="control-label"></label>
+                <input asp-for="surname" class="form-control" />
+                <span asp-validation-for="surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phoneNumber" class="control-label"></label>
+                <input asp-for="phoneNumber" class="form-control" />
+                <span asp-validation-for="phoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateOfBirth" class="control-label"></label>
+                <input asp-for="dateOfBirth" class="form-control" />
+                <span asp-validation-for="dateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category" class="control-label"></label>
+                <select asp-for="category" class="form-control" asp-items="Html.GetEnumSelectList<ContactCategory>()"></select>
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" id="subCategory">
+                <label asp-for="subCategory" class="control-label"></label>
+                <input asp-for="subCategory" class="form-control" />
+                <span asp-validation-for="subCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="subCategoryBusiness">
+                <label asp-for="subCategoryBuisness" class="control-label"></label>
+                <select asp-for="subCategoryBuisness" class="form-control" asp-items="Html.GetEnumSelectList<BusinessContactCategory>()"></select>
+                <span asp-validation-for="subCategoryBuisness" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        //show correct form part after unsuccesfull edit (some of the boxes have inapropriet values)
+        $(document).ready(function () {
+            var output = document.getElementById('subCategory');
+            var value = $('#category').val();
+            if (value == 1) {
+                $('#subCategory').hide();
+                $('#subCategoryBusiness').hide();
+            } else if (value == 2) {
+                $('#subCategory').hide();
+                $('#subCategoryBusiness').show();
+            } else {
+                $('#subCategory').show();
+                $('#subCategoryBusiness').hide();
+            }
+        })
+
+        //show correct form part after selecting contact category
+        $('#category').on("change", function () {
+
+            var output = document.getElementById('subCategory');
+            var value = $(this).val();
+            if (value == 1) {
+                $('#subCategory').hide();
+                $('#subCategoryBusiness').hide();
+            } else if (value == 2) {
+                $('#subCategory').hide();
+                $('#subCategoryBusiness').show();
+            } else {
+                $('#subCategory').show();
+                $('#subCategoryBusiness').hide();
+            }
+        })
+    </script>
+}
